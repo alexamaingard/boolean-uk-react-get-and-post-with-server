@@ -24,11 +24,6 @@
       "name": "Arosa Hike",
       "price": "40",
       "id": 5
-    },
-    {
-      "name": "Hiking",
-      "price": "10",
-      "id": 6
     }
   ],
   "tickets": [
