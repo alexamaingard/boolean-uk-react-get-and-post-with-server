@@ -1,7 +1,8 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 
-function CreateTourPage(props) {
-  const { tours, setTours } = props
+const CreateTourPage = () => {
+  let navigate = useNavigate();
 
   const [tourToCreate, setTourToCreate] = useState({
     name: "",
@@ -10,15 +11,27 @@ function CreateTourPage(props) {
 
   console.log({ tourToCreate })
 
-  function handleSubmit(event) {
-    event.preventDefault()
+  const postTourData = async () => {
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'  
+    },
+    body: JSON.stringify(tourToCreate)
+    };
 
-    // Redirect to "/" with navigate and useNavigate
+    await fetch('http://localhost:3030/tours', fetchOptions);
   }
 
-  function handleChange(event) {
-    const name = event.target.name
-    const value = event.target.value
+  const handleSubmit = event => {
+    event.preventDefault();
+    postTourData();
+    // Redirect to "/" with navigate and useNavigate
+    navigate("/", { replace: true });
+  }
+
+  const handleChange = event => {
+    const {name, value} = event.target;
 
     setTourToCreate({ ...tourToCreate, [name]: value })
   }

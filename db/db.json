@@ -19,6 +19,16 @@
       "price": "11.50",
       "name": "Big Ben",
       "id": 4
+    },
+    {
+      "name": "Arosa Hike",
+      "price": "40",
+      "id": 5
+    },
+    {
+      "name": "Hiking",
+      "price": "10",
+      "id": 6
     }
   ],
   "tickets": [
@@ -35,6 +45,20 @@
       "email": "rico@mail.com",
       "quantity": 1,
       "date": "2021-12-14T12:34:47.514Z"
+    },
+    {
+      "tourId": 1,
+      "email": "alexa@mail.com",
+      "quantity": "5",
+      "date": "2021-12-29T11:30",
+      "id": 3
+    },
+    {
+      "tourId": 2,
+      "email": "ale@email.com",
+      "quantity": "2",
+      "date": "2021-12-21T10:30",
+      "id": 4
     }
   ]
 }

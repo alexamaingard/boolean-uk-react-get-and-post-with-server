@@ -1,7 +1,22 @@
 import { useEffect, useState } from "react"
 
-function ViewTickets() {
-  const [tickets, setTickets] = useState([])
+const ViewTickets = () => {
+  const [tickets, setTickets] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch('http://localhost:3030/tickets');
+        const data = await res.json();
+        //console.log('available tickets: ', data);
+        setTickets(data);
+      }
+      catch(error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [])
 
   return (
     <ul>

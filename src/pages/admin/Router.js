@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Route, Routes } from "react-router"
 import { Link } from "react-router-dom"
 import CreateTourPage from "./tours/CreateTour"
@@ -8,7 +8,22 @@ import TicketsSummary from "./tickets/Summary"
 function AdminRouter() {
   const [tours, setTours] = useState([])
 
-  console.log({ tours })
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch('http://localhost:3030/tours');
+        const data = await res.json();
+        //console.log('available tours: ', data);
+        setTours(data);
+      }
+      catch(error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [])
+
+  console.log('available tours: ', { tours })
 
   return (
     <>
@@ -34,7 +49,7 @@ function AdminRouter() {
         <Route path="/" element={<Dashboard tours={tours} />} />
         <Route
           path="/tours/create"
-          element={<CreateTourPage tours={tours} setTours={setTours} />}
+          element={<CreateTourPage />}
         />
         <Route path="tickets/summary" element={<TicketsSummary />} />
       </Routes>

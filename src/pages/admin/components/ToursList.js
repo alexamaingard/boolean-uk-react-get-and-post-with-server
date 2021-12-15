@@ -1,5 +1,7 @@
-function ToursList(props) {
-  const { tours } = props
+import { Link } from "react-router-dom"
+
+const ToursList = props => {
+  const { tours } = props;
 
   return (
     <>
@@ -12,6 +14,9 @@ function ToursList(props) {
             <li key={index}>
               <h3>{name}</h3>
               <p>Price: £{price}</p>
+              <Link to={`/tours/${tour.id}/book`} state={{ tour }}>
+                Book Tour
+              </Link>
             </li>
           )
         })}
